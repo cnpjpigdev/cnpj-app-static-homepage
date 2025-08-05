@@ -2,12 +2,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 :root {
+    /* Tema Escuro (Padrão) */
     --bg-dark: #0A0F18;
     --bg-light-dark: #121822;
     --primary-blue: #00aaff;
     --text-primary: #E0E0E0;
     --text-secondary: #8899A6;
     --border-color: rgba(0, 170, 255, 0.2);
+    --phone-mockup-bg: #181f2b;
+    --phone-mockup-border: #000;
+}
+
+/* Definição do Tema Claro */
+body.light-theme {
+    --bg-dark: #F4F7FC; /* Fundo principal claro */
+    --bg-light-dark: #FFFFFF; /* Fundo secundário (cabeçalho, cards) */
+    --primary-blue: #007BFF; /* Azul um pouco mais sóbrio para o tema claro */
+    --text-primary: #121822; /* Texto principal escuro */
+    --text-secondary: #5A677B; /* Texto secundário cinza */
+    --border-color: rgba(0, 0, 0, 0.1); /* Borda mais sutil */
+    --phone-mockup-bg: #e1e1e1;
+    --phone-mockup-border: #cccccc;
 }
 
 /* Reset Básico e Estilos Globais */
@@ -22,6 +37,7 @@ body {
     background-color: var(--bg-dark);
     color: var(--text-primary);
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Adiciona transição suave */
 }
 
 .container {
@@ -75,6 +91,44 @@ a:hover {
     color: var(--text-primary);
 }
 
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.theme-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 24px; /* Tamanho do ícone */
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+    color: var(--text-primary);
+}
+
+/* Lógica para mostrar o ícone correto */
+.theme-toggle-btn .icon-sun,
+body.light-theme .theme-toggle-btn .icon-moon {
+    display: none;
+}
+
+body.light-theme .theme-toggle-btn .icon-sun,
+.theme-toggle-btn .icon-moon {
+    display: block;
+}
+/* Adicione esta transição a elementos que mudam de cor para ficar mais suave */
+.header, .feature-card, .phone-mockup, .screen, .btn {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
 /* Seção Hero (Home) */
 .hero {
     padding: 80px 0;
